@@ -1,13 +1,19 @@
+const { Message } = require('discord.js');
+
 const config = require("./config.json");
 const commands = require("./commands.js");
 
-module.exports = function(msg){
-    if(msg.startsWith(config.prefix, 1)){
-        msg = msg.replace(config.prefix, "")
-        for(let cmd in commands){
-            if(msg.startsWith(cmd.name)){
+/**
+ * @param {Message} msg
+ */
+let handle = function(msg){
+    if(msg.content.startsWith(config.prefix)){
+        let content = msg.content.substring(config.prefix.length);
+        for(let cmd of commands){
+            if(content.startsWith(cmd.name)){
                 cmd.run(msg);
             }
         }
     }
 }
+module.exports = handle;
