@@ -1,7 +1,5 @@
-const { Message } = require('discord.js');
-
-const config = require("./config.json");
-const commands = require("./commands.js");
+const { lstatSync, readdirSync } = require('fs');
+const { join } = require('path');
 
 /**
  * @param {string} source 
@@ -41,18 +39,7 @@ let getFiles = source => {
     return files;
 }
 
-/**
- * @param {Message} msg
- */
-let handle = function(msg){
-    if(msg.content.startsWith(config.prefix)){
-        let content = msg.content.substring(config.prefix.length);
-        for(let cmd of getFiles("./commands")){
-            console.log(cmd)
-            if(content.startsWith(cmd)){
-                cmd.run(msg);
-            }
-        }
-    }
+module.exports = {
+    getDirectories,
+    getFiles
 }
-module.exports = handle;
