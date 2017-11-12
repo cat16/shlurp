@@ -1,4 +1,4 @@
-const {Message} = require('discord.js');
+const { Message } = require('discord.js');
 
 class Command {
 
@@ -12,9 +12,11 @@ class Command {
     /**
      * @param {CommandOptions} options
      */
-    constructor(options){
+    constructor(options) {
         this.name = options.name;
         this.desc = options.desc || "no description was provided";
         this.run = options.run;
     }
 }
+
+module.exports = Command;
