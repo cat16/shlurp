@@ -47,8 +47,9 @@ let getFiles = source => {
 let handle = function(msg){
     if(msg.content.startsWith(config.prefix)){
         let content = msg.content.substring(config.prefix.length);
-        for(let cmd of files){
-            if(content.startsWith(cmd.name)){
+        for(let cmd of getFiles("./commands")){
+            console.log(cmd)
+            if(content.startsWith(cmd)){
                 cmd.run(msg);
             }
         }
