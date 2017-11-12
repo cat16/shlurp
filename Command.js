@@ -1,7 +1,20 @@
+const {Message} = require('discord.js');
+
 class Command {
-    constructor(name, desc, run){
-        this.name = name;
-        this.desc = desc;
-        this.run = run;
+
+    /**
+	 * @typedef {Object} CommandOptions
+     * @property {string} name
+     * @property {function(Message)} run
+     * @property {string} [description]
+	 */
+
+    /**
+     * @param {CommandOptions} options
+     */
+    constructor(options){
+        this.name = options.name;
+        this.desc = options.desc || "no description was provided";
+        this.run = options.run;
     }
 }
