@@ -5,7 +5,9 @@ module.exports = function(msg){
     if(msg.startsWith(config.prefix, 1)){
         msg = msg.replace(config.prefix, "")
         for(let cmd in commands){
-            if()
+            if(msg.startsWith(cmd.name)){
+                cmd.run();
+            }
         }
     }
 }
